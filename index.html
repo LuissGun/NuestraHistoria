@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para mi querida Elena ❤️ - ¡Nuestra Historia!</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Quicksand:wght@300;400;500;600;700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Definición de variables de color para fácil manejo */
+        :root {
+            --blue-lightest: #e0f2f7; /* Azul muy claro (fondo base) */
+            --blue-lighter: #b3e5fc; /* Azul más claro (degradado) */
+            --blue-soft: #81d4fa;    /* Azul suave (degradado) */
+            --blue-main: #29b6f6;    /* Azul principal (títulos, acentos) */
+            --blue-dark: #0288d1;    /* Azul oscuro (bordes, texto sutil) */
+            --text-dark: #333;       /* Texto oscuro principal */
+            --text-light: #555;      /* Texto más claro */
+            --accent-heart: #ef9a9a; /* Un rosa más suave para los corazones */
+            --button-bg-dark: #01579b; /* Azul muy oscuro para fondo de botones */
+        }
+
+        body {
+            font-family: 'Comic Sans MS', 'Comic Sans', sans-serif; /* Cambiado a Comic Sans MS */
+            background: linear-gradient(to right bottom, var(--blue-lightest), var(--blue-lighter)); /* Degradado suave de azul */
+            color: var(--text-dark);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Nuevo estilo para cada sección individual con fondo blanco */
+        .section-container {
+            background-color: #ffffff; /* Fondo blanco sólido para cada sección */
+            padding: 40px 30px;
+            border-radius: 25px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            max-width: 800px;
+            width: 100%;
+            margin-bottom: 30px; /* Espacio entre secciones */
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .section-container::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="%23b3e5fc" opacity="0.15"/></svg>') repeat;
+            opacity: 0.5;
+            z-index: 0;
+            border-radius: 25px;
+        }
+        .content {
+            position: relative;
+            z-index: 2;
+        }
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            color: var(--blue-main);
+            margin-bottom: 25px;
+            font-size: 3.5em;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+        }
+        h2 {
+            font-family: 'Dancing Script', cursive;
+            color: var(--blue-dark);
+            font-size: 2.2em;
+            margin-top: 0; /* Ajustado para las nuevas secciones */
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--blue-lighter);
+        }
+        p {
+            font-size: 1.2em;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+        .heart {
+            color: var(--accent-heart);
+            font-size: 2em;
+            margin: 25px 0;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
+
+        /* ESTILO DEL CONTADOR - INTEGRADO Y SIEMPRE HORIZONTAL */
+        .countdown-section {
+            background-color: var(--blue-lightest); /* Fondo azul muy claro, como las secciones de texto */
+            padding: 30px; /* Consistente con las secciones de texto */
+            border-radius: 15px; /* Consistente con las secciones de texto */
+            margin-top: 50px; /* Espacio superior */
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* Sombra suave */
+            width: 90%;
+            max-width: 600px; /* Mantiene un ancho razonable */
+        }
+        .countdown-section h2 {
+            font-family: 'Dancing Script', cursive; /* Mantener la fuente elegante */
+            color: var(--blue-dark); /* Color de título como el resto de subtítulos */
+            font-size: 2.2em; /* Tamaño como los otros h2 */
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--blue-lighter); /* Borde como los otros h2 */
+            text-shadow: none; /* Sin sombra de texto para mayor integración */
+            display: flex; /* Para alinear el texto y el corazón */
+            justify-content: center; /* Centrar el contenido */
+            align-items: center;
+            gap: 10px; /* Espacio entre el texto y el corazón */
+        }
+        .countdown-section h2 .heart-icon { /* Estilo para el corazón al lado del título */
+            color: var(--accent-heart);
+            font-size: 0.8em; /* Tamaño del corazón relativo al título */
+            animation: pulse 1.5s infinite;
+        }
+
+        #countdown {
+            display: flex;
+            justify-content: space-around; /* Distribuye los elementos uniformemente */
+            flex-wrap: nowrap; /* IMPORTE: Mantiene todo en una sola línea */
+            gap: 15px; /* Espacio entre los bloques de tiempo */
+            margin-top: 20px; /* Espacio superior al contador */
+        }
+        #countdown > div {
+            display: flex;
+            flex-direction: column; /* Valor y etiqueta en columna */
+            align-items: center; /* Centra el texto dentro del bloque */
+            min-width: 80px; /* Ancho mínimo para cada bloque */
+            padding: 5px 0;
+            flex-shrink: 0; /* Evita que los bloques se encojan en pantallas pequeñas */
+        }
+        #countdown .value {
+            font-family: 'Lora', serif; /* Nueva fuente para los números: Lora, más clásica y sutil */
+            font-size: 3.2em; /* Un poco más grandes */
+            font-weight: 400; /* Peso más sutil */
+            line-height: 1; /* Eliminar espacio extra vertical */
+            margin-bottom: 5px;
+            color: var(--blue-dark); /* Color oscuro para los números, más sutil */
+        }
+        #countdown .label {
+            font-family: 'Comic Sans MS', 'Comic Sans', sans-serif; /* Cambiado a Comic Sans MS */
+            font-size: 0.8em;
+            font-weight: 600;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .countdown-phrase {
+            font-family: 'Comic Sans MS', 'Comic Sans', sans-serif; /* Cambiado a Comic Sans MS */
+            font-size: 1.1em;
+            color: var(--text-light);
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        /* ************************************** */
+        /* ESTILOS PARA LA GALERÍA DE IMÁGENES (Carrusel con modal) */
+        /* ************************************** */
+        .image-slideshow-container {
+            position: relative;
+            max-width: 600px; /* Ancho máximo para el slideshow */
+            margin: 40px auto 20px; /* Centra el contenedor y agrega margen */
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background-color: #f0f8ff; /* Fondo ligeramente azulado para el slideshow */
+            overflow: hidden; /* Oculta partes de las imágenes que no son visibles */
+        }
+
+        .slideshow-inner {
+            display: flex;
+            /* transition: transform 0.5s ease-in-out;  No necesitamos esta transición si la mostramos/ocultamos */
+            justify-content: center; /* Centra la imagen activa si hay espacio */
+            align-items: center; /* Centra verticalmente */
+            height: 350px; /* Altura fija para el contenedor interno del slideshow */
+            width: 100%; /* Asegura que ocupe el 100% de su padre */
+        }
+
+        .slideshow-img {
+            width: 100%; /* La imagen ocupa el 100% del ancho del contenedor */
+            max-width: 500px; /* Limita el tamaño real de la imagen */
+            height: 100%; /* La imagen ocupa el 100% de la altura del contenedor */
+            object-fit: contain; /* Ajusta la imagen dentro del contenedor sin recortar */
+            border-radius: 10px; /* Bordes redondeados para la imagen */
+            display: none; /* Oculta todas las imágenes por defecto */
+            margin: auto; /* Centra la imagen */
+            opacity: 0; /* Para la transición de fade */
+            transition: opacity 0.5s ease; /* Transición para aparecer/desaparecer */
+            border: 3px solid var(--blue-lighter); /* Borde sutil */
+            cursor: pointer; /* Indica que la imagen es clicable */
+        }
+        .slideshow-img.active {
+            display: block; /* Muestra solo la imagen activa */
+            opacity: 1; /* Hace que la imagen activa sea visible */
+        }
+
+        .slideshow-nav {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 2em;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            background-color: rgba(0,0,0,0.5); /* Fondo oscuro semitransparente */
+            border: none;
+            outline: none;
+            z-index: 10;
+        }
+        .slideshow-nav.prev {
+            left: 0;
+            border-radius: 3px 0 0 3px;
+        }
+        .slideshow-nav.next {
+            right: 0;
+            border-radius: 0 3px 3px 0; /* Corregido para el borde del botón siguiente */
+        }
+        .slideshow-nav:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+        .slideshow-nav:disabled {
+            background-color: rgba(0,0,0,0.2);
+            cursor: not-allowed;
+        }
+
+        /* Estilos para el Modal de Imagen */
+        .image-modal {
+            display: none; /* Oculto por defecto */
+            position: fixed; /* Fijo en la pantalla */
+            z-index: 1000; /* Por encima de todo */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto; /* Permite scroll si la imagen es muy grande */
+            background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro semitransparente */
+            justify-content: center;
+            align-items: center;
+            flex-direction: column; /* Para apilar imagen y descripción */
+            animation: fadeIn 0.3s;
+        }
+
+        .image-modal-content {
+            margin: auto; /* Centrado */
+            display: block;
+            max-width: 90%;
+            max-height: 80%; /* Deja espacio para la descripción */
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            animation: zoomIn 0.3s;
+        }
+
+        .image-modal-description {
+            color: rgba(255, 255, 255, 0.9); /* Blanco un poco más visible */
+            font-size: 1.2em; /* Más grande para que se vea mejor */
+            font-family: 'Comic Sans MS', 'Comic Sans', sans-serif; /* Cambiado a Comic Sans MS */
+            text-align: center;
+            margin-top: 15px; /* Espacio entre imagen y descripción */
+            max-width: 80%; /* Ancho máximo para el texto */
+            padding: 5px 15px; /* Pequeño padding para el texto */
+            background-color: rgba(0,0,0,0.3); /* Fondo semitransparente para la descripción */
+            border-radius: 5px;
+            opacity: 0; /* Empieza invisible para la animación */
+            animation: fadeIn 0.5s 0.2s forwards; /* Aparece después de la imagen */
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .close-modal:hover,
+        .close-modal:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes zoomIn {
+            from { transform: scale(0.8); }
+            to { transform: scale(1); }
+        }
+
+        /* ************************************** */
+
+        /* Estilos para las nuevas secciones de texto (incluye el de Datos Curiosos y Objetivos) */
+        .text-section {
+            background-color: var(--blue-lightest);
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            text-align: left; /* Mantener la alineación a la izquierda para el texto general */
+            line-height: 1.8;
+            color: var(--text-dark);
+            font-family: 'Comic Sans MS', 'Comic Sans', sans-serif; /* Cambiado a Comic Sans MS */
+            font-weight: 400;
+        }
+        .text-section p, .text-section ul {
+            font-size: 1.1em;
+            margin-bottom: 1em;
+        }
+        .text-section ul {
+            list-style: none; /* Quita los puntos de lista predeterminados */
+            padding: 0;
+        }
+
+        /* ESTILOS ESPECÍFICOS PARA LOS ÍTEMS DE LA LISTA DE DATOS CURIOSOS */
+        #curious-facts-list li {
+            display: none; /* Oculto por defecto */
+            text-align: center; /* Centrar el texto del dato curioso */
+            font-size: 1.2em; /* Tamaño de fuente para el dato */
+            color: var(--text-dark);
+            font-weight: 500;
+            padding: 10px 0; /* Padding vertical */
+            line-height: 1.6;
+            transition: opacity 0.5s ease; /* Para una transición suave al cambiar de dato */
+            opacity: 0; /* Empieza invisible para la transición */
+        }
+        #curious-facts-list li.active {
+            display: block; /* Muestra solo el dato activo */
+            opacity: 1; /* Hace que aparezca */
+        }
+        /* Asegurarse de que el corazón no aparezca en los datos curiosos */
+        #curious-facts-list li::before {
+            content: none; /* Elimina el contenido del pseudo-elemento */
+        }
+
+
+        /* NUEVOS ESTILOS ESPECÍFICOS PARA LOS ÍTEMS DE LA LISTA DE OBJETIVOS (LAS BURBUJAS) */
+        .objective-bubble {
+            position: relative;
+            padding: 15px 20px 15px 45px; /* Más padding para el texto y espacio para el ícono */
+            margin-bottom: 15px; /* Espacio entre las "burbujas" */
+            background-color: #ffffff; /* Fondo blanco para la burbuja */
+            border-radius: 20px; /* Bordes redondeados */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); /* Sombra suave */
+            text-align: left; /* Alinea el texto del objetivo a la izquierda dentro de la burbuja */
+            color: var(--text-dark); /* Color de texto más oscuro */
+            font-weight: 600; /* Texto un poco más negrita */
+            display: block; /* Asegura que cada li ocupe su propia línea vertical */
+            border: 1px solid var(--blue-lighter); /* Borde suave para definir la burbuja */
+            transition: transform 0.2s ease, box-shadow 0.2s ease; /* Transición suave al pasar el ratón */
+        }
+        .objective-bubble:hover {
+            transform: translateY(-3px); /* Pequeño efecto al pasar el ratón */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12); /* Sombra más pronunciada */
+        }
+        .objective-bubble::before {
+            content: '💙'; /* Icono de corazón */
+            position: absolute;
+            left: 15px; /* Distancia desde la izquierda */
+            top: 50%; /* Centrado verticalmente */
+            transform: translateY(-50%); /* Ajuste fino del centrado */
+            color: var(--blue-main); /* Color del corazón */
+            font-size: 1.2em; /* Tamaño del corazón */
+        }
+
+        /* Estilos para los botones de navegación de Datos Curiosos (Flechas) - CON RECUADRO OSCURO */
+        .navigation-buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+        .nav-button {
+            background-color: var(--button-bg-dark); /* Fondo azul oscuro */
+            color: #ffffff; /* Letra blanca */
+            border: none;
+            font-size: 1.5em; /* Un poco más pequeñas las flechas */
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            padding: 8px 15px; /* Padding para hacer el recuadro */
+            border-radius: 8px; /* Bordes redondeados */
+            line-height: 1;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .nav-button:hover {
+            background-color: var(--blue-dark); /* Azul un poco más claro al pasar el ratón */
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .nav-button:disabled {
+            background-color: #cccccc; /* Gris para deshabilitado */
+            color: #888888;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .signature {
+            margin-top: 40px;
+            font-style: italic;
+            color: var(--text-light);
+            font-size: 1.1em;
+            font-family: 'Dancing Script', cursive;
+            font-weight: 700;
+        }
+
+        /* SECCIÓN "HECHO CON ❤️" */
+        .made-with-love-section {
+            margin-top: 60px; /* Más espacio para separarlo del contador */
+            padding: 30px;
+            background-color: var(--blue-lighter); /* Fondo suave */
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            max-width: 500px;
+            width: 100%;
+            margin-bottom: 30px; /* Espacio debajo para que no se pegue al final */
+        }
+
+        .made-with-love-section h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3em; /* Tamaño grande para el título */
+            color: var(--blue-dark);
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+            display: flex; /* Para centrar el corazón */
+            justify-content: center;
+            align-items: center;
+            gap: 10px; /* Espacio entre texto y corazón */
+        }
+        .made-with-love-section h3 .love-heart {
+            color: var(--accent-heart);
+            font-size: 1.2em; /* Corazón un poco más grande que el texto */
+            animation: pulse 1.5s infinite; /* Misma animación de pulso */
+        }
+
+        .made-with-love-section .author-text {
+            font-family: 'Comic Sans MS', 'Comic Sans', sans-serif; /* Cambiado a Comic Sans MS */
+            font-size: 1.3em;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .made-with-love-section .motto-text {
+            font-family: 'Comic Sans MS', 'Comic Sans', sans-serif; /* Cambiado a Comic Sans MS */
+            font-size: 0.9em; /* Más pequeño */
+            color: var(--text-light);
+            font-style: italic;
+            margin-top: 5px;
+        }
+
+        /* Estilos del botón "Te Amo" */
+        /* Nuevo estilo para ubicarlo abajo a la derecha */
+        .te-amo-button-container {
+            position: fixed; /* Lo fija en la pantalla */
+            bottom: 20px; /* Distancia desde la parte inferior */
+            right: 20px; /* Distancia desde la parte derecha */
+            z-index: 999; /* Asegura que esté por encima de otros elementos */
+            /* Quitar margin-top/bottom si se usa fixed */
+            margin: 0; 
+        }
+
+        .te-amo-button {
+            background-color: var(--accent-heart); /* Color del corazón */
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px; /* Mucho más redondeado */
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5em; /* Grande y bonito */
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(239, 154, 154, 0.4); /* Sombra rosada */
+            transition: transform 0.2s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+            display: inline-flex; /* Para centrar el corazón si lo pones */
+            align-items: center;
+            gap: 10px;
+        }
+        .te-amo-button:hover {
+            background-color: #e57373; /* Un rosa un poco más oscuro al pasar el ratón */
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(239, 154, 154, 0.6);
+        }
+        .te-amo-button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 5px rgba(239, 154, 154, 0.4);
+        }
+        .te-amo-button .button-heart {
+            font-size: 1.2em;
+            animation: pulse 1.5s infinite; /* Misma animación de pulso */
+        }
+
+        /* Estilos del mensaje flotante de "Te Amo" */
+        .floating-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(239, 154, 154, 0.9); /* Rosa semi-transparente */
+            color: white;
+            padding: 25px 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            font-family: 'Dancing Script', cursive;
+            font-size: 3em;
+            text-align: center;
+            z-index: 1000; /* Asegura que esté por encima de todo */
+            opacity: 0; /* Empieza invisible */
+            pointer-events: none; /* No bloquea clics detrás */
+            animation: fade-in-out 3s forwards; /* Animación de aparecer y desaparecer */
+        }
+
+        @keyframes fade-in-out {
+            0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+            20% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+            80% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+            100% { opacity: 0; transform: translate(-50%, -50%) scale(1.2); }
+        }
+
+        /* Corazones flotantes MEJORADOS */
+        .floating-heart {
+            position: fixed;
+            color: var(--accent-heart);
+            /* Utilizo un emoji unicode para un mejor renderizado */
+            font-size: 1.5em; /* Tamaño base */
+            opacity: 0.7; /* Más visibles */
+            z-index: 0;
+            pointer-events: none;
+            /* Sombra de texto suave y colorida */
+            text-shadow: 0px 0px 8px rgba(255, 105, 180, 0.7), 
+                         0px 0px 15px rgba(255, 105, 180, 0.4);
+            animation: float-fancy 10s ease-in-out infinite alternate; /* Animación más elegante */
+        }
+
+        /* Variaciones para los corazones */
+        .floating-heart:nth-child(1) { top: 10%; left: 5%; font-size: 1.8em; animation-delay: 0s; animation-duration: 9s; }
+        .floating-heart:nth-child(2) { top: 30%; right: 8%; font-size: 2.2em; animation-delay: 2s; animation-duration: 11s; }
+        .floating-heart:nth-child(3) { top: 50%; left: 12%; font-size: 1.6em; animation-delay: 4s; animation-duration: 10s; }
+        .floating-heart:nth-child(4) { top: 70%; right: 3%; font-size: 2.0em; animation-delay: 6s; animation-duration: 12s; }
+        .floating-heart:nth-child(5) { top: 85%; left: 7%; font-size: 1.5em; animation-delay: 8s; animation-duration: 8s; }
+        .floating-heart:nth-child(6) { top: 20%; left: 1%; font-size: 2.5em; animation-delay: 1s; animation-duration: 13s; }
+        .floating-heart:nth-child(7) { top: 60%; right: 10%; font-size: 1.7em; animation-delay: 3s; animation-duration: 9.5s; }
+
+        @keyframes float-fancy {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0.7; }
+            25% { transform: translateY(-20px) translateX(10px) rotate(5deg); opacity: 0.9; }
+            50% { transform: translateY(-40px) translateX(-10px) rotate(-5deg); opacity: 0.7; }
+            75% { transform: translateY(-20px) translateX(10px) rotate(5deg); opacity: 0.9; }
+            100% { transform: translateY(0) rotate(0deg); opacity: 0.7; }
+        }
+
+        /* Media queries para responsividad */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.8em; }
+            h2 { font-size: 1.8em; }
+            p { font-size: 1em; }
+            
+            /* Ajustes para el slideshow en móviles */
+            .image-slideshow-container {
+                max-width: 95%; /* Ocupa casi todo el ancho */
+                margin-top: 20px;
+                height: 300px; /* Altura un poco menor en tablet */
+            }
+            .slideshow-inner { height: 100%; }
+            .slideshow-img {
+                max-width: 90%; /* Ajuste para que la imagen se vea bien */
+            }
+            .slideshow-nav {
+                padding: 12px;
+                font-size: 1.8em;
+                margin-top: -18px;
+            }
+
+            /* Modal en móvil */
+            .image-modal-content {
+                max-width: 95%; /* Un poco más de espacio en móviles */
+                max-height: 70%; /* Deja más espacio para la descripción */
+            }
+            .close-modal {
+                font-size: 30px;
+                right: 20px;
+                top: 10px;
+            }
+            .image-modal-description {
+                font-size: 0.9em; /* Más pequeña en móvil */
+                margin-top: 10px;
+            }
+
+            #countdown { font-size: 1.5em; gap: 10px; }
+            #countdown .value { font-size: 2.2em; }
+            #countdown .label { font-size: 0.7em; }
+            #countdown > div { min-width: 60px; }
+            .floating-heart { display: none; }
+            .countdown-section { padding: 20px; }
+            .countdown-section h2 { font-size: 2.0em; }
+            .countdown-phrase { font-size: 1em; }
+            #countdown { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+            #countdown::-webkit-scrollbar { display: none; }
+            
+            .objective-bubble { 
+                padding: 12px 15px 12px 40px; /* Ajuste el padding para pantallas más pequeñas */
+                margin-bottom: 10px;
+                font-size: 1em; /* Un poco más pequeño para que quepa bien */
+            }
+            .objective-bubble::before {
+                left: 10px; /* Ajuste la posición del corazón */
+                font-size: 1em;
+            }
+            #curious-facts-list li {
+                font-size: 1em; /* Ajuste para móvil */
+            }
+
+            .made-with-love-section { padding: 20px; margin-top: 40px; }
+            .made-with-love-section h3 { font-size: 2.5em; }
+            .made-with-love-section .author-text { font-size: 1.1em; }
+            .made-with-love-section .motto-text { font-size: 0.8em; }
+
+            /* Ajuste del botón "Te Amo" en móviles */
+            .te-amo-button-container {
+                bottom: 10px;
+                right: 10px;
+            }
+            .te-amo-button { font-size: 2em; padding: 12px 25px; }
+            .floating-message { font-size: 2.2em; padding: 20px 30px; }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 2.2em; }
+            h2 { font-size: 1.6em; }
+            
+            /* Ajustes para el slideshow en móviles pequeños */
+            .image-slideshow-container {
+                height: 250px; /* Altura un poco menor */
+            }
+            .slideshow-img {
+                max-width: 95%; /* Asegura que la imagen no se recorte */
+            }
+            .slideshow-nav {
+                padding: 10px;
+                font-size: 1.5em;
+                margin-top: -15px;
+            }
+
+            /* Modal en móvil */
+            .image-modal-content {
+                max-width: 95%;
+                max-height: 60%;
+            }
+            .image-modal-description {
+                font-size: 0.8em;
+            }
+
+
+            #countdown { font-size: 1.2em; gap: 5px; }
+            #countdown .value { font-size: 1.8em; }
+            #countdown .label { font-size: 0.6em; }
+            #countdown > div { min-width: 45px; }
+            .countdown-section { padding: 15px; }
+            .countdown-section h2 { font-size: 1.6em; }
+            .countdown-phrase { font-size: 0.9em; }
+            .nav-button { font-size: 1.2em; padding: 5px 10px; }
+
+            .made-with-love-section { padding: 15px; margin-top: 30px; }
+            .made-with-love-section h3 { font-size: 2em; }
+            .made-with-love-section .author-text { font-size: 1em; }
+            .made-with-love-section .motto-text { font-size: 0.7em; }
+
+            /* Ajuste del botón "Te Amo" en móviles aún más pequeños */
+            .te-amo-button-container {
+                bottom: 5px;
+                right: 5px;
+            }
+            .te-amo-button { font-size: 1.6em; padding: 8px 15px; }
+            .floating-message { font-size: 1.8em; padding: 15px 25px; }
+
+            .objective-bubble { 
+                padding: 10px 12px 10px 35px; /* Más ajustes para los más pequeños */
+                border-radius: 15px;
+                font-size: 0.9em;
+            }
+            .objective-bubble::before {
+                left: 8px;
+                font-size: 0.9em;
+            }
+            #curious-facts-list li {
+                font-size: 0.9em; /* Ajuste para móvil */
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="floating-heart">❤️</div>
+    <div class="floating-heart">❤️</div>
+    <div class="floating-heart">❤️</div>
+    <div class="floating-heart">❤️</div>
+    <div class="floating-heart">❤️</div>
+    <div class="floating-heart">❤️</div>
+    <div class="floating-heart">❤️</div>
+
+    <div class="section-container">
+        <div class="content">
+            <h1>¡Hola mi amor!</h1>
+            <div class="heart">❤️</div>
+            <p>
+                Este pequeño rincón es para ti, para celebrar nuestra historia y todo lo que significa para mí.
+                Cada día a tu lado es una aventura, un aprendizaje y un regalo.
+                Gracias por tu sonrisa, tu apoyo incondicional y por ser una persona maravillosa.
+                Gracias por ser como sos.
+            </p>
+            <p>
+                Te Amo Muchísimo <span class="heart">❤️</span>
+            </p>
+        </div>
+    </div>
+    
+    <div class="section-container">
+        <div class="content">
+            <h2>Cómo comenzó nuestra historia</h2>
+            <div class="text-section">
+                <p>
+                    Holaa amorrr &lt;3 bueno.. ambos sabemos como fue todo pero yo te contare mi versión para que sepas masomenos todo lo que yo vivi en esos momentos. La primera vez que nos vimos en la playa yo estaba nervioso claro se me notaba y como decias miraba mucho al frente pero es que vos estabas tan pero tan hermosa que me costaba mirarte de frente y no ponerme mas nervioso aún. La verdad no esperaba que pasara de ahi pero seguimos charlando y la verdad que me sorprendio mucho lo simpatica y buena que eras .. Luego obvio de a poco hablando y viendonos enseguida me di cuenta que me gustabas aunque no estaba seguro que seria correspondido. pero bueno la verdad que en ese momento que vi que tenia una minima oportunidad dije: no puedo desperdiciarla, me tengo que esforzar que se nota de sobra que valias la pena y asi es. Aun hoy en dia a veces mirandote no puedo creer que estoy con vos a tu lado. No somos novios todavia pero yo ya se que con vos quiero todo.. y espero que ese dia llegue con ansias ya que no hay nada que me de mas felicidad que poder decir que vos sos Mi novia. Eso me daria la misma o mas Felicidad de cuando la primera vez que te bese en San Carlos. Pensaba que me harias una cobra sinceramente jaj pero luego de ese beso supe que esos eran los besos que querria para toda la vida, bueno .. hoy en dia aun nos seguimos conociendo pues 3 meses apenas han pasado aunque yo lo siento como si fuera mucho mas la verdad y espero que este solo el comienzo de una muy linda historia de nosotros 
+                </p>
+                <p>
+                    te amo corazon &lt;3 
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section-container">
+        <div class="content">
+            <h2>Nuestros Momentos</h2> 
+            <div class="image-slideshow-container">
+                <div class="slideshow-inner" id="image-slideshow-inner">
+                    <img src="20250517_203342.jpg" alt="Atardecer Elena con móvil" class="slideshow-img" data-description="Elena disfrutando el atardecer con su móvil.">
+                    <img src="20250517_203406.jpg" alt="Atardecer Elena de espaldas" class="slideshow-img" data-description="Elena de espaldas contemplando el atardecer.">
+                    <img src="20250517_203458.jpg" alt="Atardecer Paisaje" class="slideshow-img" data-description="Un hermoso paisaje al atardecer.">
+                    <img src="20250517_204332.jpg" alt="Atardecer Panorámica" class="slideshow-img" data-description="Vista panorámica de un atardecer inolvidable.">
+                    <img src="20250517_200203.jpg" alt="Trenza de Elena" class="slideshow-img" data-description="Detalle de la bonita trenza de Elena.">
+                    <img src="20250524_212252.jpg" alt="Cena al atardecer" class="slideshow-img" data-description="Nuestra cena especial con el sol poniéndose.">
+                    <img src="20250614_162352.jpg" alt="Selfie en casa" class="slideshow-img" data-description="Un selfie casual en casa.">
+                    <img src="20250614_162413.jpg" alt="Abrazo cariñoso" class="slideshow-img" data-description="Un abrazo lleno de cariño.">
+                    <img src="20250615_183334.jpg" alt="Batidos juntos" class="slideshow-img" data-description="Disfrutando de unos refrescantes batidos.">
+                    <img src="20250615_193659.jpg" alt="Jugando a Mario Kart" class="slideshow-img" data-description="Momentos divertidos jugando Mario Kart.">
+                    <img src="20250615_193542.jpg" alt="Elena 'Wanted' en el juego" class="slideshow-img" data-description="Elena siendo la más buscada en el juego.">
+                    <img src="20250602_194748.jpg" alt="Con el perrito" class="slideshow-img" data-description="Elena y yo con un adorable perrito.">
+                    <img src="20250602_195230.jpg" alt="Abrazando al perrito" class="slideshow-img" data-description="Elena abrazando tiernamente al perrito.">
+                    <img src="20250608_180144.jpg" alt="Día de playa" class="slideshow-img" data-description="Un soleado día de playa juntos.">
+                    <img src="20250615_221206.jpg" alt="Noche de pizzas y peli" class="slideshow-img" data-description="Nuestra clásica noche de pizzas y película.">
+                    <img src="20250619_204313.jpg" alt="En una cafetería" class="slideshow-img" data-description="Un momento acogedor en una cafetería.">
+                    <img src="20250619_204525.jpg" alt="Beso en la calle" class="slideshow-img" data-description="Un beso espontáneo en la calle.">
+                    <img src="20250619_204357.jpg" alt="Abrazos en la cafetería" class="slideshow-img" data-description="Abrazos y risas en nuestra cafetería favorita.">
+                    <img src="519820676_1926012091520193_3377070201905928659_n.jpg" alt="Momento cariñoso" class="slideshow-img" data-description="Un momento de puro cariño entre nosotros.">
+                    <img src="520343035_1926012224853513_3886616243914858878_n.jpg" alt="Selfie sonriente" class="slideshow-img" data-description="Selfie con nuestras mejores sonrisas.">
+                </div>
+                <button class="slideshow-nav prev" id="prev-moment">❮</button>
+                <button class="slideshow-nav next" id="next-moment">❯</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section-container">
+        <div class="content">
+            <h2>Datos Curiosos</h2>
+            <div class="text-section" id="curious-facts-section">
+                <ul id="curious-facts-list">
+                    <li class="fact-item">💙 Adicta a la shisha hah</li>
+                    <li class="fact-item">💙 Llora muy fácil mirando pelis</li>
+                    <li class="fact-item">💙 Odia a los zombies pero igual empatiza con ellos wtf</li>
+                    <li class="fact-item">💙 Zumo fav de naranja, manzana y zanahoria</li>
+                    <li class="fact-item">💙 Hace churritos con los stickers de los precios</li>
+                    <li class="fact-item">💙 Nuestro lugar favorito para [actividad] es...</li>
+                    <li class="fact-item">💙 Lo más gracioso que nos ha pasado juntos fue cuando...</li>
+                    <li class="fact-item">💙 Mi recuerdo más preciado contigo hasta ahora es...</li>
+                    <li class="fact-item">💙 Una cosa que solo entendemos nosotros es...</li>
+                    <li class="fact-item">💙 Nuestra canción especial es...</li>
+                    
+                </ul>
+                <div class="navigation-buttons">
+                    <button id="prev-fact" class="nav-button">←</button>
+                    <button id="next-fact" class="nav-button">→</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section-container">
+        <div class="content">
+            <h2>Nuestros Objetivos</h2>
+            <div class="text-section">
+                <p>Juntos, podemos lograr cualquier cosa. Aquí algunos de los sueños y metas que me encantaría que compartamos:</p>
+                <ul>
+                    <li class="objective-bubble">💙 Ser novios Oficialmente.</li>
+                    <li class="objective-bubble">💙 Viajar a Argentina.</li>
+                    <li class="objective-bubble">💙 Viajar a Londres.</li>
+                    <li class="objective-bubble">💙 Casarnos.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section-container">
+        <div class="content">
+            <h2>Mi Carta para ti, Elena</h2>
+            <div class="text-section">
+                <p>Mi amor:</p>
+                <p>Quiero decirte tantas cosas pero comenzare por lo mas importante que es agradecerte por aparecer en mi Vida ..</p>
+                <p>desde que llegaste cambiaste mi vida totalmente, me levantaba y acostaba contento por haber hablado o salido con vos</p>
+                <p>siempre emocionado por saber cuando seria la próxima vez que te vería y hoy en día sigo sintiendo lo mismo</p>
+                <p>quiero que sepas lo mucho que Te Amo y que cada día lo hago mas y mas.. Lo Agradecido que estoy por tenerte a mi lado</p>
+                <p>Estar con vos me hace muy Feliz, disfruto mucho todos los momentos que compartimos, las miles de charlas, las miles de risas</p>
+                <p>y que nos podamos contar todo, Amo como sos .. tu personalidad, como me haces sentir cuando estoy con vos de verdad me siento</p>
+                <p>cómodo y en paz, y eso es algo que valoro y te agradezco muchísimo amor y yo siempre voy a querer el doble para vos</p>
+                <p>de las cosas buenas que vos me das a mi ..</p>
+                <p>Mi deseo es que sigamos creciendo juntos, aprendiendo uno del otro y construyendo nuestra relación para que ambos seamos cada día mejores. ..</p>
+                <p>yo se que de mi parte me falta aprender muchas cosas pero te juro que esfuerzo y voluntad para ser mejor jamás faltaran</p>
+                <p>quiero hacerte muy feliz .. tanto como vos me lo haces a mi!</p>
+                <p>No miento cuando te digo que te amo, que sos el amor de mi vida y quiero pasar el resto de mi vida con vos ..</p>
+                <p>jamás me había sentido tan seguro de algo en mi vida, de que quiero todo con vos y voy a luchar al máximo para conseguirlo</p>
+                <p>quiero poder hacerte tan feliz como vos lo haces conmigo.</p>
+                <p>Quiero que tengas la certeza de que siempre voy a Cuidarte, a Respetarte y Amarte . Sos lo mas importante para mi, mi Prioridad</p>
+                <p>Lo nuestro para mi es un regalo, es un tesoro que prometo cuidar y valorar siempre.. </p>
+                <p>Gracias por ser vos ..</p>
+                <p>Te amo Corazon ..</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section-container">
+        <div class="content">
+            <div class="signature">
+                Con todo mi cariño,
+                <br>
+                Luis
+            </div>
+        </div>
+    </div>
+    
+    <div class="countdown-section">
+        <h2>Nuestro tiempo juntos <span class="heart-icon">❤️</span></h2>
+        <div id="countdown">
+            <div>
+                <span class="value" id="days"></span>
+                <span class="label">días</span>
+            </div>
+            <div>
+                <span class="value" id="hours"></span>
+                <span class="label">horas</span>
+            </div>
+            <div>
+                <span class="value" id="minutes"></span>
+                <span class="label">minutos</span>
+            </div>
+            <div>
+                <span class="value" id="seconds"></span>
+                <span class="label">segundos</span>
+            </div>
+        </div>
+        <p class="countdown-phrase">
+            Cada segundo a tu lado me hace feliz ❤️
+        </p>
+    </div>
+    
+    <div class="made-with-love-section">
+        <h3>Hecho con <span class="love-heart">❤️</span></h3>
+        <p class="author-text">Por Luis para mi amor Elena</p>
+        <p class="motto-text">Todo lo que hago lo hago pensando en vos</p>
+    </div>
+    
+    <div class="te-amo-button-container">
+        <button id="te-amo-button" class="te-amo-button">
+            ¡Te Amo! <span class="button-heart">❤️</span>
+        </button>
+    </div>
+    <div id="te-amo-floating-message" class="floating-message"></div>
+    
+    <div id="image-modal" class="image-modal">
+        <span class="close-modal">&times;</span>
+        <img class="image-modal-content" id="img-modal">
+        <p class="image-modal-description" id="img-modal-description"></p>
+    </div>
+    
+    <script>
+        // --- SCRIPT PARA EL CONTADOR DE TIEMPO ---
+        // Fecha en la que se conocieron (4 de mayo de 2025)
+        const startDate = new Date('2025-05-04T00:00:00'); // Formato AAAA-MM-DDTHH:mm:ss
+
+        function updateCountdown() {
+            const now = new Date();
+            const timeElapsed = now - startDate; // Diferencia en milisegundos
+
+            // Si la fecha de inicio es en el futuro, el contador mostrará 0 o valores negativos
+            if (timeElapsed < 0) {
+                document.getElementById('days').textContent = 0;
+                document.getElementById('hours').textContent = 0;
+                document.getElementById('minutes').textContent = 0;
+                document.getElementById('seconds').textContent = 0;
+                return; // Salir de la función si la fecha aún no ha llegado
+            }
+
+
+            // Calcula días, horas, minutos y segundos
+            const seconds = Math.floor((timeElapsed / 1000) % 60);
+            const minutes = Math.floor((timeElapsed / (1000 * 60)) % 60);
+            const hours = Math.floor((timeElapsed / (1000 * 60 * 60)) % 24);
+            const days = Math.floor(timeElapsed / (1000 * 60 * 60 * 24));
+
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours;
+            document.getElementById('minutes').textContent = minutes;
+            document.getElementById('seconds').textContent = seconds;
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown(); // Llama una vez al cargar para evitar el retraso inicial
+
+
+        // --- SCRIPT PARA LOS DATOS CURIOSOS CON FLECHAS ---
+        const facts = document.querySelectorAll('.fact-item');
+        const prevFactButton = document.getElementById('prev-fact');
+        const nextFactButton = document.getElementById('next-fact');
+        let currentFactIndex = 0;
+
+        function showFact(index) {
+            facts.forEach((fact, i) => {
+                if (i === index) {
+                    fact.classList.add('active');
+                } else {
+                    fact.classList.remove('active');
+                }
+            });
+            updateFactButtons();
+        }
+
+        function updateFactButtons() {
+            prevFactButton.disabled = currentFactIndex === 0;
+            nextFactButton.disabled = currentFactIndex === facts.length - 1;
+        }
+
+        prevFactButton.addEventListener('click', () => {
+            if (currentFactIndex > 0) {
+                currentFactIndex--;
+                showFact(currentFactIndex);
+            }
+        });
+
+        nextFactButton.addEventListener('click', () => {
+            if (currentFactIndex < facts.length - 1) {
+                currentFactIndex++;
+                showFact(currentFactIndex);
+            }
+        });
+
+        // Mostrar el primer dato curioso al cargar la página
+        if (facts.length > 0) {
+            showFact(currentFactIndex);
+        }
+
+        // --- SCRIPT PARA EL SLIDESHOW DE "NUESTROS MOMENTOS" ---
+        const slideshowImages = document.querySelectorAll('.slideshow-img');
+        const prevMomentButton = document.getElementById('prev-moment');
+        const nextMomentButton = document.getElementById('next-moment');
+        let currentMomentIndex = 0;
+
+        function showMoment(index) {
+            slideshowImages.forEach((img, i) => {
+                if (i === index) {
+                    img.classList.add('active');
+                } else {
+                    img.classList.remove('active');
+                }
+            });
+            updateMomentButtons();
+        }
+
+        function updateMomentButtons() {
+            prevMomentButton.disabled = currentMomentIndex === 0;
+            nextMomentButton.disabled = currentMomentIndex === slideshowImages.length - 1;
+        }
+
+        prevMomentButton.addEventListener('click', () => {
+            if (currentMomentIndex > 0) {
+                currentMomentIndex--;
+                showMoment(currentMomentIndex);
+            }
+        });
+
+        nextMomentButton.addEventListener('click', () => {
+            if (currentMomentIndex < slideshowImages.length - 1) {
+                currentMomentIndex++;
+                showMoment(currentMomentIndex);
+            }
+        });
+
+        // Mostrar la primera imagen al cargar la página
+        if (slideshowImages.length > 0) {
+            showMoment(currentMomentIndex);
+        }
+
+
+        // --- SCRIPT PARA EL BOTÓN "TE AMO" Y MENSAJE FLOTANTE ---
+        const teAmoButton = document.getElementById('te-amo-button');
+        const floatingMessageDiv = document.getElementById('te-amo-floating-message');
+
+        teAmoButton.addEventListener('click', () => {
+            // 1. Registro en la consola (para ti)
+            const timestamp = new Date().toLocaleString('es-ES', { dateStyle: 'full', timeStyle: 'medium' });
+            console.log(`¡Elena ha pulsado el botón "Te Amo"! Hora: ${timestamp}`);
+
+            // 2. Mensaje flotante animado (para Elena)
+            const messages = [
+                "¡Yo también te amo mi amor! ❤️",
+                "¡Yo te amo Más mi amor! ❤️",
+                "¡Te Amo, Elena! ❤️",
+                "¡Un ❤️ para ti, mi amor!",
+                "¡Recibiste un gran abrazo y un te amo! 🥰",
+                "¡Gracias por este clic, mi vida! 😘",
+                "¡Tu corazón acaba de latir por Luis! 💖"
+            ];
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            
+            floatingMessageDiv.textContent = randomMessage;
+            floatingMessageDiv.style.opacity = '0'; // Asegura que empieza invisible para la animación
+            floatingMessageDiv.style.animation = 'none'; // Resetea la animación
+            void floatingMessageDiv.offsetWidth; // Truco para forzar el reinicio de la animación
+            floatingMessageDiv.style.animation = 'fade-in-out 3s forwards';
+
+            // Opcional: Desactivar el botón por un corto tiempo para evitar spam
+            teAmoButton.disabled = true;
+            setTimeout(() => {
+                teAamoButton.disabled = false;
+            }, 3000); // Se vuelve a activar después de 3 segundos
+        });
+
+        // --- SCRIPT PARA EL MODAL DE IMAGEN (AHORA FUNCIONA CON EL SLIDESHOW) ---
+        const modal = document.getElementById('image-modal');
+        const modalImg = document.getElementById('img-modal');
+        const modalDescription = document.getElementById('img-modal-description');
+        const closeModal = document.getElementsByClassName('close-modal')[0];
+        
+        // Listener para abrir el modal al hacer clic en la imagen activa del slideshow
+        slideshowImages.forEach(img => {
+            img.addEventListener('click', function() {
+                if (this.classList.contains('active')) { // Solo si es la imagen que se está mostrando actualmente
+                    modal.style.display = 'flex'; // Cambia a flex para centrar
+                    modalImg.src = this.src; // Establece la fuente de la imagen en el modal
+                    // Usa el atributo data-description o el alt text
+                    modalDescription.textContent = this.dataset.description || this.alt || ''; 
+                    modalDescription.style.opacity = '0'; // Reinicia la opacidad para la animación
+                    modalDescription.style.animation = 'none'; // Resetea la animación
+                    void modalDescription.offsetWidth; // Truco para forzar el reinicio
+                    modalDescription.style.animation = 'fadeIn 0.5s 0.2s forwards'; // Aplica la animación
+                }
+            });
+        });
+
+        // Cierra el modal al hacer clic en la X
+        closeModal.addEventListener('click', function() {
+            modal.style.display = 'none';
+            modalDescription.textContent = ''; // Limpiar descripción al cerrar
+        });
+
+        // Cierra el modal al hacer clic fuera de la imagen (en el fondo oscuro)
+        modal.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+                modalDescription.textContent = ''; // Limpiar descripción al cerrar
+            }
+        });
+    </script>
+</body>
+</html>
